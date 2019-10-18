@@ -13,9 +13,7 @@ import java.util.List;
 
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 
-import com.sap.cloud.sdk.s4hana.datamodel.odata.helper.Order;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartner;
-import com.sap.cloud.sdk.s4hana.datamodel.odata.services.DefaultBusinessPartnerService;
 
 @WebServlet("/api/business-partners")
 public class BusinessPartnerServlet extends HttpServlet {
@@ -28,16 +26,7 @@ public class BusinessPartnerServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             final List<BusinessPartner> businessPartners =
-                    new DefaultBusinessPartnerService()
-                            .getAllBusinessPartner()
-                            .select(BusinessPartner.BUSINESS_PARTNER,
-                                    BusinessPartner.LAST_NAME,
-                                    BusinessPartner.FIRST_NAME,
-                                    BusinessPartner.IS_MALE,
-                                    BusinessPartner.IS_FEMALE,
-                                    BusinessPartner.CREATION_DATE)
-                            .orderBy(BusinessPartner.LAST_NAME, Order.ASC)
-                            .execute();
+                    new GetBusinessPartnersCommand().execute();
 
             response.setContentType("application/json");
             response.getWriter().write(new Gson().toJson(businessPartners));
