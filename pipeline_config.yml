@@ -26,13 +26,12 @@ general:
 ### Step-specific configuration
 steps:
 
-
 ### Stage-specific configuration
 stages:
-#  integrationTests:
-#    credentials:
-#      - alias: 'mySystemAlias'
-#        credentialId: 'mySystemCredentialsId'
+  integrationTests:
+    credentials:
+      - alias: 'MOCK_SYSTEM'
+        credentialId: 'CredentialsId-Mock'
 
 #  s4SdkQualityChecks:
 #    nonErpDestinations:

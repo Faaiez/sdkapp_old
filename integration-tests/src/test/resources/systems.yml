@@ -1,0 +1,5 @@
+erp:
+  default: "MOCK_SYSTEM"
+  systems:
+    - alias: "MOCK_SYSTEM"
+      uri: https://mockserver-brave-giraffe.cfapps.eu10.hana.ondemand.com/
